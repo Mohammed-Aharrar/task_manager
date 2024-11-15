@@ -44,3 +44,7 @@ class TaskManager:
                 self.storage.save_tasks(self.tasks)
                 return True
         return False
+    def remove_task(self, task_id):
+        self.tasks = [task for task in self.tasks if task['id'] != task_id]
+        self.storage.save_tasks(self.tasks)
+        return True

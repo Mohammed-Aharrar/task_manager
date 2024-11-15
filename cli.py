@@ -31,5 +31,14 @@ def complete(task_id):
     else:
         click.echo("Task not found.")
 
+@cli.command()
+@click.argument('task_id', type=int)
+def remove(task_id):
+    """Remove a task"""
+    if manager.remove_task(task_id):
+        click.echo(f"Task {task_id} removed.")
+    else:
+        click.echo("Task not found.")
+
 if __name__ == '__main__':
     cli()
