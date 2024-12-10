@@ -26,11 +26,31 @@ cd task_manager
 
 
 
-3. **Install Dependencies**:
+2. **Install Dependencies**:
 Install all necessary libraries using Poetry.
 poetry install
 
 
+
+## Static Code Analysis
+
+To ensure code quality and maintain consistent formatting, this project utilizes **Flake8** and **Black** for static code analysis. After installing the dependencies, you can perform linting with Flake8 and check or format your code with Black.
+
+- **Run Static Analysis**:
+  - **Flake8** (Linting):
+    ```bash
+    poetry run flake8 .
+    ```
+
+  - **Black** (Formatting Check):
+    ```bash
+    poetry run black --check .
+    ```
+
+  - **Black** (Auto-formatting):
+    ```bash
+    poetry run black .
+    ```
 
 
 ## Usage
