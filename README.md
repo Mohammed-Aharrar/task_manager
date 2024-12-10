@@ -51,7 +51,9 @@ To ensure code quality and maintain consistent formatting, this project utilizes
     ```bash
     poetry run black .
     ```
+- **Automatic Execution**
 
+    Black and Flake8 will automatically run on staged files every time you execute git commit. If any issues are detected, the commit will be blocked until they are resolved.
 
 ## Usage
 
