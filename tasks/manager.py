@@ -14,12 +14,34 @@ logger = logging.getLogger(__name__)
 
 
 class TaskManager:
+    """
+    Manages tasks by providing functionalities to add, list, complete, and remove tasks.
+
+    Attributes:
+        storage (Storage): An instance of the Storage class for handling persistent storage.
+        tasks (list): A list of task dictionaries.
+    """
+
     def __init__(self, storage_file="tasks.json"):
+        """
+        Initializes the TaskManager with a storage file.
+
+        Args:
+            storage_file (str): The filename for storing tasks. Defaults to "tasks.json".
+        """
         self.storage = Storage(storage_file)
         self.tasks = self.storage.load_tasks()
         logger.info("TaskManager initialized with storage file '%s'.", storage_file)
 
     def add_task(self, title, description, due_date):
+        """
+        Adds a new task to the task list.
+
+        Args:
+            title (str): The title of the task.
+            description (str): A brief description of the task.
+            due_date (str): The due date for the task in 'YYYY-MM-DD' format.
+        """
         logger.debug("Attempting to add task with title: '%s'.", title)
         if not title:
             logger.warning("Attempted to add a task without a title.")
@@ -37,6 +59,9 @@ class TaskManager:
         logger.info("Task '%s' added successfully with ID %d.", title, task_id)
 
     def list_tasks(self):
+        """
+        Displays all tasks in a formatted table.
+        """
         logger.debug("Listing all tasks.")
         table = Table(title="Task List")
         table.add_column("ID", justify="right")
@@ -57,6 +82,15 @@ class TaskManager:
         logger.info("Displayed %d tasks.", len(self.tasks))
 
     def mark_complete(self, task_id):
+        """
+        Marks a task as complete based on its ID.
+
+        Args:
+            task_id (int): The ID of the task to mark as complete.
+
+        Returns:
+            bool: True if the task was found and marked as complete, False otherwise.
+        """
         logger.debug("Marking task ID %d as complete.", task_id)
         for task in self.tasks:
             if task["id"] == task_id:
@@ -71,6 +105,15 @@ class TaskManager:
         return False
 
     def remove_task(self, task_id):
+        """
+        Removes a task from the task list based on its ID.
+
+        Args:
+            task_id (int): The ID of the task to remove.
+
+        Returns:
+            bool: True if the task was found and removed, False otherwise.
+        """
         logger.debug("Attempting to remove task ID %d.", task_id)
         initial_count = len(self.tasks)
         self.tasks = [task for task in self.tasks if task["id"] != task_id]

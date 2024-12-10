@@ -16,16 +16,29 @@ manager = TaskManager()
 
 @click.group()
 def cli():
-    """Task Management System"""
+    """
+    Task Management System CLI.
+
+    Provides commands to add, list, complete, and remove tasks.
+    """
     logger.info("CLI invoked.")
 
 
 @cli.command()
 @click.option("--title", prompt="Title", help="Title of the task")
 @click.option("--description", prompt="Description", help="Description of the task")
-@click.option("--due_date", prompt="Due Date", help="Due date of the task")
+@click.option(
+    "--due_date", prompt="Due Date", help="Due date of the task in 'YYYY-MM-DD' format"
+)
 def add(title, description, due_date):
-    """Add a new task"""
+    """
+    Add a new task to the Task Manager.
+
+    Args:
+        title (str): The title of the task.
+        description (str): A brief description of the task.
+        due_date (str): The due date for the task.
+    """
     logger.debug(
         "Add command called with title: '%s', description: '%s', due_date: '%s'.",
         title,
@@ -43,7 +56,9 @@ def add(title, description, due_date):
 
 @cli.command()
 def list():
-    """List all tasks"""
+    """
+    List all tasks in the Task Manager.
+    """
     logger.debug("List command called.")
     try:
         manager.list_tasks()
@@ -56,7 +71,12 @@ def list():
 @cli.command()
 @click.argument("task_id", type=int)
 def complete(task_id):
-    """Mark a task as complete"""
+    """
+    Mark a specific task as complete.
+
+    Args:
+        task_id (int): The ID of the task to mark as complete.
+    """
     logger.debug("Complete command called for task ID: %d.", task_id)
     try:
         if manager.mark_complete(task_id):
@@ -73,7 +93,12 @@ def complete(task_id):
 @cli.command()
 @click.argument("task_id", type=int)
 def remove(task_id):
-    """Remove a task"""
+    """
+    Remove a specific task from the Task Manager.
+
+    Args:
+        task_id (int): The ID of the task to remove.
+    """
     logger.debug("Remove command called for task ID: %d.", task_id)
     try:
         if manager.remove_task(task_id):

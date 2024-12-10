@@ -110,6 +110,14 @@ poetry build
 
 This command makes a `.whl` file and a source archive in the `dist` directory.
 
+## Documentation
+
+We use `pdoc` to generate reference documentation from the Python docstrings. To generate the documentation in docs folder we use the following command:
+```bash
+poetry run pdoc tasks cli --output-dir docs
+```
+
+
 ## License
 
 This project is under the MIT License. See the [LICENSE](LICENSE) file for details.
