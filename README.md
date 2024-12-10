@@ -55,6 +55,10 @@ To ensure code quality and maintain consistent formatting, this project utilizes
 
     Black and Flake8 will automatically run on staged files every time you execute git commit. If any issues are detected, the commit will be blocked until they are resolved.
 
+## Unit Testing
+
+We use `pytest` for unit testing to ensure the reliability of the Task Manager's functionalities. To run the tests that are in tests/test_manager.py we use  ```bash poetry run pytest tests/test_manager.py```
+
 ## Usage
 
 The application supports the following commands:
