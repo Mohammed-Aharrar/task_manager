@@ -1,2 +1,8 @@
 2024-12-10 15:33:23,208 - tasks.manager - INFO - TaskManager initialized with storage file 'tasks.json'.
 2024-12-10 15:34:57,530 - tasks.manager - INFO - TaskManager initialized with storage file 'tasks.json'.
+2024-12-10 20:16:08,214 - tasks.manager - INFO - TaskManager initialized with storage file 'tasks.json'.
+2024-12-10 20:16:08,216 - __main__ - INFO - CLI invoked.
+2024-12-10 20:16:08,216 - __main__ - DEBUG - List command called.
+2024-12-10 20:16:08,216 - tasks.manager - DEBUG - Listing all tasks.
+2024-12-10 20:16:08,228 - tasks.manager - INFO - Displayed 4 tasks.
+2024-12-10 20:16:08,228 - __main__ - INFO - Tasks listed via CLI.

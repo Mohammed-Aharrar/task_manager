@@ -62,44 +62,6 @@ We use `pytest` for unit testing to ensure the reliability of the Task Manager's
 ```bash
 poetry run pytest tests/test_manager.py
 ```
-## Usage
-
-The application supports the following commands:
-
-### Adding a Task
-
-To add a task:
-poetry run python cli.py add --title "Your Task Title" --description "Your Task Description" --due_date "YYYY-MM-DD"
-
-
-
-You will be prompted to enter the title, description, and due date if not specified.
-
-### Listing Tasks
-
-To see all tasks:
-poetry run python cli.py list
-
-
-
-This shows all tasks with their details like ID, title, and status.
-
-### Completing a Task
-
-To mark a task as done:
-poetry run python cli.py complete <task_id>
-
-
-
-Replace `<task_id>` with the ID of the task.
-
-### Removing a Task
-
-To delete a task:
-poetry run python cli.py remove <task_id>
-
-
-Replace `<task_id>` with the ID of the task you want to remove.
 
 ## Building the Project
 
