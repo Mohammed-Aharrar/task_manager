@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "task-manager"
-version = "0.1.0"
+version = "0.2.0"
 description = "A Task Management System"
 authors = ["Mohammed Aharrar Soulali"]
 license = "MIT"
