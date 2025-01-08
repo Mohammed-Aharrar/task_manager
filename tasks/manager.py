@@ -1,7 +1,13 @@
-import logging
-from .storage import Storage
-from rich.table import Table
+"""
+manager.py
+
+Implements the TaskManager class to manage tasks with functionalities like add, list, complete, and remove.
+"""
+
+import logging  # Standard library import
+from rich.table import Table  # Third-party imports
 from rich.console import Console
+from .storage import Storage  # Local imports
 
 # Configure logging
 logging.basicConfig(
@@ -16,10 +22,6 @@ logger = logging.getLogger(__name__)
 class TaskManager:
     """
     Manages tasks by providing functionalities to add, list, complete, and remove tasks.
-
-    Attributes:
-        storage (Storage): An instance of the Storage class for handling persistent storage.
-        tasks (list): A list of task dictionaries.
     """
 
     def __init__(self, storage_file="tasks.json"):
@@ -36,11 +38,6 @@ class TaskManager:
     def add_task(self, title, description, due_date):
         """
         Adds a new task to the task list.
-
-        Args:
-            title (str): The title of the task.
-            description (str): A brief description of the task.
-            due_date (str): The due date for the task in 'YYYY-MM-DD' format.
         """
         logger.debug("Attempting to add task with title: '%s'.", title)
         if not title:
@@ -84,12 +81,6 @@ class TaskManager:
     def mark_complete(self, task_id):
         """
         Marks a task as complete based on its ID.
-
-        Args:
-            task_id (int): The ID of the task to mark as complete.
-
-        Returns:
-            bool: True if the task was found and marked as complete, False otherwise.
         """
         logger.debug("Marking task ID %d as complete.", task_id)
         for task in self.tasks:
@@ -107,12 +98,6 @@ class TaskManager:
     def remove_task(self, task_id):
         """
         Removes a task from the task list based on its ID.
-
-        Args:
-            task_id (int): The ID of the task to remove.
-
-        Returns:
-            bool: True if the task was found and removed, False otherwise.
         """
         logger.debug("Attempting to remove task ID %d.", task_id)
         initial_count = len(self.tasks)

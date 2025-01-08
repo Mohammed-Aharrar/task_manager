@@ -1,3 +1,9 @@
+"""
+storage.py
+
+Handles loading and saving tasks to a persistent JSON file.
+"""
+
 import json
 import os
 
@@ -27,7 +33,7 @@ class Storage:
             list: A list of task dictionaries.
         """
         if os.path.exists(self.filename):
-            with open(self.filename, "r") as f:
+            with open(self.filename, "r", encoding="utf-8") as f:
                 return json.load(f)
         return []
 
@@ -38,5 +44,5 @@ class Storage:
         Args:
             tasks (list): A list of task dictionaries to save.
         """
-        with open(self.filename, "w") as f:
+        with open(self.filename, "w", encoding="utf-8") as f:
             json.dump(tasks, f, indent=4)

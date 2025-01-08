@@ -1,6 +1,12 @@
-import click
-import logging
-from tasks.manager import TaskManager
+"""
+cli.py
+
+Provides a Command Line Interface (CLI) for managing tasks.
+"""
+
+import click  # Third-party import
+import logging  # Standard library import
+from tasks.manager import TaskManager  # Local import
 
 # Configure logging
 logging.basicConfig(
@@ -49,13 +55,16 @@ def add(title, description, due_date):
         manager.add_task(title, description, due_date)
         click.echo(f"Task '{title}' added!")
         logger.info("Task '%s' added via CLI.", title)
+    except ValueError as e:
+        logger.error("Invalid input: %s", e)
+        click.echo("Invalid input. Please try again.")
     except Exception as e:
         logger.critical("Failed to add task: %s", e)
         click.echo("An error occurred while adding the task.")
 
 
 @cli.command()
-def list():
+def list_tasks():
     """
     List all tasks in the Task Manager.
     """
@@ -63,6 +72,9 @@ def list():
     try:
         manager.list_tasks()
         logger.info("Tasks listed via CLI.")
+    except FileNotFoundError as e:
+        logger.error("File not found: %s", e)
+        click.echo("Storage file not found.")
     except Exception as e:
         logger.critical("Failed to list tasks: %s", e)
         click.echo("An error occurred while listing tasks.")
