@@ -41,8 +41,6 @@ jobs:
         run: |
           echo "## Changelog" > changelog.md
           git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"- %s" >> changelog.md
-        # Save the changelog content for later steps
-        shell: bash
 
       # Step 7: Create Release on GitHub
       - name: Create Release
@@ -50,5 +48,6 @@ jobs:
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          body: ${{ steps.changelog.outputs.changelog }}
-          files: dist/*
+          body: |
+            ${{ steps.changelog.outputs.changelog }}
+          artifacts: dist/*
