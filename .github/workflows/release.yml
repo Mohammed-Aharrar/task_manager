@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'  # Trigger only when tags matching 'v*' are pushed
 
+permissions:
+  contents: write  # Grant write access for creating releases and uploading artifacts
+
 jobs:
   release:
     runs-on: ubuntu-latest
